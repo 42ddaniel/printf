@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_funcs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddaniel- <ddaniel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:10:26 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/10/31 16:57:39 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:00:42 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../ft_printf.h"
+#include "../ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
-int ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    int len;
+	int	len;
 
-    if (!str)
-    {
-        write(1, "(null)", 6);
-        return (6);
-    }
-    len = ft_strlen(str);
-    write(1, str, len);
-    return (len);
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	len = ft_strlen(str);
+	write(1, str, len);
+	return (len);
 }
 
-int ft_putnbr(int   nbr)
+int	ft_putnb(int nbr)
 {
-    char    *str;
-    int len;
+	char	*str;
+	int		len;
 
-    str = ft_itoa(nbr);
-    len = ft_putstr(str);
-    free(str);
-    return(len);
+	str = ft_itoa(nbr);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }
 
-int ft_putnbr_u(unsigned int    nbr)
+int	ft_putnb_u(unsigned int nbr)
 {
-    char    *str;
-    int len;
+	char	*str;
+	int		len;
 
-    str = ft_itoa(nbr);
-    len = ft_putstr(str);
-    free(str);
-    return (len);
+	str = ft_itoa(nbr);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }
