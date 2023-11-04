@@ -6,7 +6,7 @@
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:19:05 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/03 17:49:06 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:17:26 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ int	printf_arg(const char *form, va_list arg)
 	else if (form == 's')
 		return (ft_putstr(va_arg(arg, char *)));
 	else if (form == 'p')
-		return ();
+		return (put_ptr(va_arg(arg, )));
 	else if (form == 'd' || form == 'i')
 		return (ft_putnb(va_arg(arg, int)));
 	else if (form == 'u')
 		return (ft_putnb_u(va_arg(arg, unsigned int)));
 	else if (form == 'x' || form == 'X')
-		return ();
+	{
+		if (form == 'x')
+			return (print_hex(va_arg(arg, unsigned int), "0123456789abcdef"));
+		else 
+			return (print_hex(va_arg(arg, unsigned int), "0123456789ABCDEF"));
+	}
 	else if (form == '%')
 		return (ft_putchar(form));
 }

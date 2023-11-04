@@ -6,7 +6,7 @@
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:48:28 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:10:50 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:19:48 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ int	print_hex(unsigned int n, char *base)
 
 	str = hex_str(n, base);
 	len = count_hex(str);
+	free(str);
+	return (len);
+}
+
+int	put_ptr(void *nbr, char base)
+{
+	unsigned long	n;
+	char			*str;
+	int				len;
+
+	n = (unsigned long)nbr;
+	str = hex_str(n, base);
+	len = ft_putstr(str);
 	free(str);
 	return (len);
 }
