@@ -17,8 +17,9 @@ LIBFTDIR	= ./libft
 
 SRC			= ./files
 
-PRINTF_SRCS	= ft_printf.c ft_printf_hex.c ft_printf_p.c \
-				ft_printf_un.c ft_printf_funcs.c
+PRINTF_SRCS	=	ft_printf.c \
+				ft_printf_hex.c \
+				ft_printf_funcs.c \
 
 OBJS		= $(PRINTF_SRCS:.c=.o)
 

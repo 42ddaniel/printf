@@ -12,27 +12,30 @@
 
 #include "../ft_printf.h"
 
-int	printf_arg(const char *form, va_list arg)
+int	printf_arg(const char *form, int i, va_list arg)
 {
-	if (form == 'c')
+	if (form[i + 1] == 'c')
 		return (ft_putchar(va_arg(arg, int)));
-	else if (form == 's')
+	else if (form[i + 1] == 's')
 		return (ft_putstr(va_arg(arg, char *)));
-	else if (form == 'p')
-		return (put_ptr(va_arg(arg, )));
-	else if (form == 'd' || form == 'i')
+	else if (form[i + 1] == 'p')
+		return (ft_putstr("0x") + put_ptr(va_arg(arg, void *),
+				"0123456789abcdef"));
+	else if (form[i + 1] == 'd' || form[i + 1] == 'i')
 		return (ft_putnb(va_arg(arg, int)));
-	else if (form == 'u')
+	else if (form[i + 1] == 'u')
 		return (ft_putnb_u(va_arg(arg, unsigned int)));
-	else if (form == 'x' || form == 'X')
+	else if (form[i + 1] == 'x' || form[i + 1] == 'X')
 	{
-		if (form == 'x')
+		if (form[i + 1] == 'x')
 			return (print_hex(va_arg(arg, unsigned int), "0123456789abcdef"));
-		else 
+		else
 			return (print_hex(va_arg(arg, unsigned int), "0123456789ABCDEF"));
 	}
-	else if (form == '%')
-		return (ft_putchar(form));
+	else if (form[i + 1] == '%')
+		return (ft_putchar(form[i]));
+	else
+		return (0);
 }
 
 int	ft_printf(const char *form, ...)
@@ -48,9 +51,9 @@ int	ft_printf(const char *form, ...)
 		return (-1);
 	while (form[i])
 	{
-		if (form[i] == "%" && ft_strchr("cspdiuxX%", form[i + 1]))
+		if (form[i] == '%' && ft_strchr("cspdiuxX%", form[i + 1]))
 		{
-			ret += printf_arg(form[i + 1], arg);
+			ret += printf_arg(form, i, arg);
 			i++;
 		}
 		else

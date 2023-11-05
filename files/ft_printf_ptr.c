@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_hex.c                                    :+:      :+:    :+:   */
+/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 17:48:28 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/05 21:12:35 by ddaniel-         ###   ########.fr       */
+/*   Created: 2023/11/05 21:06:08 by ddaniel-          #+#    #+#             */
+/*   Updated: 2023/11/05 21:12:36 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	count_hex(unsigned int n)
+static int	count_hex(unsigned long n)
 {
 	int	i;
 
@@ -47,11 +47,13 @@ static char	*ft_hex_str(unsigned int n, char *base)
 	return (hex);
 }
 
-int	print_hex(unsigned int n, char *base)
+int	put_ptr(void *nbr, char *base)
 {
-	char	*str;
-	int		len;
+	unsigned long	n;
+	char			*str;
+	int				len;
 
+	n = (unsigned long)nbr;
 	str = ft_hex_str(n, base);
 	len = ft_putstr(str);
 	free(str);
