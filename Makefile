@@ -6,49 +6,52 @@
 #    By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 21:13:05 by ddaniel-          #+#    #+#              #
-#    Updated: 2023/11/04 21:28:24 by ddaniel-         ###   ########.fr        #
+#    Updated: 2023/11/06 12:25:28 by diogo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
+NAME			= libftprintf.a
 
-LIBFT		= ./libft/libft.a
-LIBFTDIR	= ./libft
+INCLUDE 		= ft_printf.h
+SRC				= ./files
 
-SRC			= ./files
+CFLAGS			= -Wall -Wextra -Werror -g -I./include
+CC				= gcc
+FLAGLIB			= -rcs
+RM				= /bin/rm -f
 
-PRINTF_SRCS	=	ft_printf.c \
-				ft_printf_hex.c \
-				ft_printf_funcs.c \
+LIBFT_DIR		= ./libft
+LIBFT			= ./libft/libft.a
 
-OBJS		= $(PRINTF_SRCS:.c=.o)
+FT_PRINTF		= ft_printf_funcs.c ft_printf_hex.c ft_printf_ptr.c ft_printf.c 
+OBJECTS			= $(FT_PRINTF:.c=.o)
 
-CC			= cc 
-AR			= ar rcs
-RM			= rm -rf 
-CFLAGS		= -Wall -Wextra -Werror
-CP			= cp
+all:				$(NAME)
 
-all:		$(NAME)
+all: $(NAME)
 
-$(NAME):	$(LIBFT) $(OBJS)
-				$(CP) $(LIBFT) $(NAME)
-				@$(AR) $(NAME) $(OBJS)
+$(NAME): $(LIBFT) $(OBJECTS)
+	@echo "Linking $(NAME)"
+	@cp $(LIBFT) $(NAME)
+	@ar $(FLAGLIB) $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
 
-$(LIBFT):	$(LIBFTDIR)
-				@$(MAKE) -C $(LIBFTDIR)
+$(LIBFT): $(LIBFT_DIR)
+	@echo "Compiling libft"
+	@$(MAKE) -C $(LIBFT_DIR)
 
-%.o: 		$(SRC)/%.c
-				@$(CC) $(CFLAGS) -c $< -o $@
+%.o: $(SRC)/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiling $<"
 
 clean:
-			@$(MAKE) clean -C $(LIBFTDIR)
-			@$(RM) $(OBJS)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(RM) $(OBJECTS)
 
 fclean:		clean
-				@$(MAKE) fclean -C $(LIBFTDIR)
-				@$(RM) $(NAME)
+			@$(MAKE) fclean -C $(LIBFT_DIR)
+			@$(RM) $(NAME)
 
-re:			fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all re clean fclean
