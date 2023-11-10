@@ -6,7 +6,7 @@
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:48:28 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/05 21:12:35 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:39:55 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*ft_hex_str(unsigned int n, char *base)
 		return (NULL);
 	hex[size] = '\0';
 	size--;
-	while (size > 0)
+	while (size >= 0)
 	{
 		hex[size] = base[n % 16];
 		n = n / 16;

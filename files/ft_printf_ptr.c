@@ -6,7 +6,7 @@
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:06:08 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/05 21:12:36 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:37:21 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	count_hex(unsigned long n)
 	return (i);
 }
 
-static char	*ft_hex_str(unsigned int n, char *base)
+static char	*ft_hex_str(unsigned long n, char *base)
 {
 	int		size;
 	char	*hex;
@@ -38,7 +38,7 @@ static char	*ft_hex_str(unsigned int n, char *base)
 		return (NULL);
 	hex[size] = '\0';
 	size--;
-	while (size > 0)
+	while (size >= 0)
 	{
 		hex[size] = base[n % 16];
 		n = n / 16;
@@ -53,9 +53,16 @@ int	put_ptr(void *nbr, char *base)
 	char			*str;
 	int				len;
 
+	len = 0;
+	if (nbr == 0)
+	{
+		len += write(1, "(nil)", 5);
+		return (len);
+	}
 	n = (unsigned long)nbr;
 	str = ft_hex_str(n, base);
-	len = ft_putstr(str);
+	len = write(1, "0x", 2);
+	len += ft_putstr(str);
 	free(str);
 	return (len);
 }

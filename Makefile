@@ -6,7 +6,7 @@
 #    By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 21:13:05 by ddaniel-          #+#    #+#              #
-#    Updated: 2023/11/06 12:25:28 by diogo            ###   ########.fr        #
+#    Updated: 2023/11/10 19:38:00 by ddaniel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RM				= /bin/rm -f
 LIBFT_DIR		= ./libft
 LIBFT			= ./libft/libft.a
 
-FT_PRINTF		= ft_printf_funcs.c ft_printf_hex.c ft_printf_ptr.c ft_printf.c 
+FT_PRINTF		= ft_printf_funcs.c ft_printf_hex.c ft_printf_ptr.c ft_printf_u.c ft_printf.c 
 OBJECTS			= $(FT_PRINTF:.c=.o)
 
 all:				$(NAME)
