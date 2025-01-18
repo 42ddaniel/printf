@@ -6,7 +6,7 @@
 #    By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 21:13:05 by ddaniel-          #+#    #+#              #
-#    Updated: 2023/11/10 19:38:00 by ddaniel-         ###   ########.fr        #
+#    Updated: 2024/01/20 13:11:41 by ddaniel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME			= libftprintf.a
 INCLUDE 		= ft_printf.h
 SRC				= ./files
 
-CFLAGS			= -Wall -Wextra -Werror -g -I./include
+CFLAGS			= -Wall -Wextra -Werror -g
 CC				= gcc
 FLAGLIB			= -rcs
 RM				= /bin/rm -f

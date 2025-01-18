@@ -6,7 +6,7 @@
 /*   By: ddaniel- <ddaniel-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:36:34 by ddaniel-          #+#    #+#             */
-/*   Updated: 2023/11/10 19:45:28 by ddaniel-         ###   ########.fr       */
+/*   Updated: 2024/01/20 12:48:58 by ddaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "libft/libft.h"
 
 int			ft_printf(const char *form, ...);
